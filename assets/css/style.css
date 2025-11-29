@@ -466,7 +466,9 @@ body {
   }
 
   .hero-photo {
-    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .photo-placeholder {
@@ -510,8 +512,3 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-.hero-photo img,
-.hero-photo-img {
-  max-width: 100%;
-  height: auto;
-}
