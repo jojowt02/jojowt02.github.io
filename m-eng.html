@@ -91,54 +91,37 @@
 
   
 <script>
-  document.querySelectorAll('.reveal-btn').forEach(btn => {
+  // Open modal with content from the matching hidden block
+  document.querySelectorAll('.open-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault(); // stops link navigation
-      const card = btn.closest('.card');
-      card.classList.toggle('open');
-      btn.textContent = card.classList.contains('open') ? "Show Less" : "Read More";
+      e.preventDefault();
+
+      const id = btn.dataset.modalId; // e.g. "ecam-modal"
+      const hiddenBlock = document.getElementById(id);
+
+      if (!hiddenBlock) return;
+
+      document.getElementById('modal-body').innerHTML = hiddenBlock.innerHTML;
+      document.getElementById('project-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
     });
   });
-</script>
 
-<div id="project-modal" class="modal-overlay">
-  <div class="modal-content">
-    <span class="modal-close">&times;</span>
-    <div id="modal-body"></div>
-  </div>
-</div>  
-
-<script>
-document.querySelectorAll('.open-modal').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const id = btn.dataset.modalId;          // get which modal to open
-    const content = document.getElementById(id).innerHTML; // get HTML content
-
-    // inject HTML into the modal viewer
-    document.getElementById('modal-body').innerHTML = content;
-
-    // show the modal overlay
-    document.getElementById('project-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
-});
-
-// close modal
-document.querySelector('.modal-close').addEventListener('click', () => {
-  document.getElementById('project-modal').classList.remove('active');
-  document.body.style.overflow = '';
-});
-
-// close when clicking outside modal
-document.getElementById('project-modal').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) {
-    e.currentTarget.classList.remove('active');
+  // Close modal when clicking the X
+  document.querySelector('.modal-close').addEventListener('click', () => {
+    document.getElementById('project-modal').classList.remove('active');
     document.body.style.overflow = '';
-  }
-});
+  });
+
+  // Close when clicking outside the modal box
+  document.getElementById('project-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 </script>
+
 
 
 
