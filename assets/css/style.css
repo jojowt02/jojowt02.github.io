@@ -293,6 +293,7 @@ body {
   border-radius: 10px;
   padding: 1.5rem 1.4rem 1.6rem;
   border: 1px solid var(--border-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .experience-card h3 {
@@ -315,14 +316,20 @@ body {
 }
 
 .card-link {
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: inherit !important;
   display: block;
+}
+
+.card-link h3,
+.card-link p {
+  color: inherit !important;
+  text-decoration: none !important
 }
 
 .card-link:hover .experience-card {
   transform: translateY(-4px);
-  transition: transform 0.2s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 
