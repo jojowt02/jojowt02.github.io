@@ -48,10 +48,10 @@
         <p>Designing and validating a multi-electrode electrochemical additive
         manufacturing system for high-resolution copper microstructures.</p>
         <!-- a href="ecam.html" class="btn primary">Read More</a> -->
-        <button class="reveal-btn"> Read More </button>
+        <button class="reveal-btn">Read More</button>
+        <a href="#" class="btn primary reveal-btn">Read More</a>
 
         <div class="reveal-content">
-          
           <p> 
             More paragraphs on the project.
           </p>
@@ -85,7 +85,8 @@
 
 <script>
   document.querySelectorAll('.reveal-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // stops link navigation
       const card = btn.closest('.card');
       card.classList.toggle('open');
       btn.textContent = card.classList.contains('open') ? "Show Less" : "Read More";
