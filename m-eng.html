@@ -57,7 +57,7 @@
         <h3>TEST PROJECT</h3>
         <p>Testing modal functionality.</p>
       
-        <a href="#" class="btn primary open-modal" data-modal-id="test-modal">Read More</a>
+        <a href="ecam.html" class="btn primary">Read More</a>
       </div>
       
 
@@ -75,15 +75,6 @@
         <a href="spacecraft-systems.html" class="btn primary">Read More</a>
       </div>
 
-      <div id="project-modal" class="modal-overlay">
-        <div class="modal-content">
-          <span class="modal-close">&times;</span>
-          <div id="modal-body"></div>
-        </div>
-      </div>
-
-
-      
     </div>
 
   </div>
@@ -95,43 +86,6 @@
   </div>
 </footer>
 
-
-
   
-<script>
-  // Open modal with content from the matching hidden block
-  document.querySelectorAll('.open-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const id = btn.dataset.modalId; // e.g. "ecam-modal"
-      const hiddenBlock = document.getElementById(id);
-
-      if (!hiddenBlock) return;
-
-      document.getElementById('modal-body').innerHTML = hiddenBlock.innerHTML;
-      document.getElementById('project-modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  // Close modal when clicking the X
-  document.querySelector('.modal-close').addEventListener('click', () => {
-    document.getElementById('project-modal').classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  // Close when clicking outside the modal box
-  document.getElementById('project-modal').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      e.currentTarget.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-</script>
-
-
-
-
 </body>
 </html>
