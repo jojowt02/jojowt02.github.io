@@ -48,15 +48,14 @@
         <p>Designing and validating a multi-electrode electrochemical additive
         manufacturing system for high-resolution copper microstructures.</p>
         <!-- a href="ecam.html" class="btn primary">Read More</a> -->
-        <button class="reveal-btn">Read More</button>
-        <a href="#" class="btn primary reveal-btn">Read More</a>
+        <!-- <button class="reveal-btn">Read More</button> -->
+        <a href="#" class="btn primary open-modal" data-project="ecam">Read More</a>
 
-        <div class="reveal-content">
+        <!-- <div class="reveal-content">
           <p> 
             More paragraphs on the project.
           </p>
-
-        </div>
+        </div>        -->
       </div>
 
       <div class="card card-light experience-card">
@@ -93,6 +92,56 @@
     });
   });
 </script>
+
+<div id="project-modal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <div id="modal-body"></div>
+  </div>
+</div>  
+
+<script>
+// 🔥 Project content data:
+const projectContent = {
+  ecam: `
+    <h2>ECAM Multi-Electrode Printer</h2>
+    <p>
+      This project focused on developing a sequentially fired electrode array system
+      for electrochemical additive manufacturing...
+    </p>
+    <img src="assets/img/ecam-example.jpg" style="width:100%; border-radius:10px; margin-top:1rem;">
+  `,
+  // Add more:
+  uas: `...`,
+  spacecraft: `...`,
+};
+
+// Open Modal
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const key = btn.dataset.project;
+    document.getElementById('modal-body').innerHTML = projectContent[key];
+    document.getElementById('project-modal').classList.add('active');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  });
+});
+
+// Close Modal
+document.querySelector('.modal-close').addEventListener('click', () => {
+  document.getElementById('project-modal').classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+// Close on overlay click
+document.getElementById('project-modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
 
 </body>
 </html>
