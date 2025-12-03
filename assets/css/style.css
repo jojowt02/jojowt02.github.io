@@ -27,6 +27,15 @@ body {
   background-color: var(--bg-light);
 }
 
+a,
+a: link,
+a: visited,
+a: hover,
+a: active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
 /* Utility */
 
 .container {
@@ -327,9 +336,14 @@ body {
   text-decoration: none !important
 }
 
+.card-link .experience-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: block;
+}
+
 .card-link:hover .experience-card {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 
