@@ -343,6 +343,18 @@ a: active {
   border: 1px solid var(--border-soft);
 }
 
+.project-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
+.project-card p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
 .card-link {
   text-decoration: none !important;
   color: inherit !important;
