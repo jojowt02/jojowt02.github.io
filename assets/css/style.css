@@ -314,6 +314,18 @@ body {
   line-height: 1.7;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:hover .experience-card {
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+}
+
+
 /* EDUCATION */
 
 .education-section {
