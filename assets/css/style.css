@@ -333,6 +333,16 @@ a: active {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card-light {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.card-dark {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+}
+
 .card-link {
   text-decoration: none !important;
   color: inherit !important;
