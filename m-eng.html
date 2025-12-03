@@ -35,11 +35,20 @@
     </p>
 
     <div class="experience-grid">
-      <div class="card card-light experience-card">
+      <div class="card card-light project-card">
         <h3>Multi-Electrode ECAM Printer (MEng Final Project)</h3>
         <p>Designing and validating a multi-electrode electrochemical additive
         manufacturing system for high-resolution copper microstructures.</p>
-        <a href="ecam.html" class="btn primary">Read More</a>
+        <!-- a href="ecam.html" class="btn primary">Read More</a> -->
+        <button class="reveal-btn"> Read More </button>
+
+        <div class="reveal-content">
+          
+          <p> 
+            More paragraphs on the project.
+          </p>
+
+        </div>
       </div>
 
       <div class="card card-light experience-card">
@@ -65,6 +74,16 @@
     © 2025 Jonathan Thomas.
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.reveal-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card');
+      card.classList.toggle('open');
+      btn.textContent = card.classList.contains('open') ? "Show Less" : "Read More";
+    });
+  });
+</script>
 
 </body>
 </html>
