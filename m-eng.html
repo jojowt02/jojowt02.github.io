@@ -49,13 +49,18 @@
         manufacturing system for high-resolution copper microstructures.</p>
         <!-- a href="ecam.html" class="btn primary">Read More</a> -->
         <!-- <button class="reveal-btn">Read More</button> -->
+        
         <a href="#" class="btn primary open-modal" data-project="ecam">Read More</a>
-
-        <!-- <div class="reveal-content">
-          <p> 
-            More paragraphs on the project.
-          </p>
-        </div>        -->
+      </div>
+      
+      <div id="ecam-modal" class="modal-hidden">
+        <h2>ECAM Multi-Electrode Printer</h2>
+        <p> 
+          This project explored sequentially fired electrode arrays for ECAM deposition...
+        </p>
+        
+        <img src="assets/img/ecam-1.jpg" class="modal-img">
+        <img src="assets/img/ecam-2.jpg" class="modal-img">
       </div>
 
       <div class="card card-light experience-card">
@@ -82,6 +87,9 @@
   </div>
 </footer>
 
+
+
+  
 <script>
   document.querySelectorAll('.reveal-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -101,39 +109,29 @@
 </div>  
 
 <script>
-// 🔥 Project content data:
-const projectContent = {
-  ecam: `
-    <h2>ECAM Multi-Electrode Printer</h2>
-    <p>
-      This project focused on developing a sequentially fired electrode array system
-      for electrochemical additive manufacturing...
-    </p>
-    <img src="assets/img/ecam-example.jpg" style="width:100%; border-radius:10px; margin-top:1rem;">
-  `,
-  // Add more:
-  uas: `...`,
-  spacecraft: `...`,
-};
-
-// Open Modal
 document.querySelectorAll('.open-modal').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const key = btn.dataset.project;
-    document.getElementById('modal-body').innerHTML = projectContent[key];
+
+    const id = btn.dataset.modalId;          // get which modal to open
+    const content = document.getElementById(id).innerHTML; // get HTML content
+
+    // inject HTML into the modal viewer
+    document.getElementById('modal-body').innerHTML = content;
+
+    // show the modal overlay
     document.getElementById('project-modal').classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
+    document.body.style.overflow = 'hidden';
   });
 });
 
-// Close Modal
+// close modal
 document.querySelector('.modal-close').addEventListener('click', () => {
   document.getElementById('project-modal').classList.remove('active');
   document.body.style.overflow = '';
 });
 
-// Close on overlay click
+// close when clicking outside modal
 document.getElementById('project-modal').addEventListener('click', (e) => {
   if (e.target === e.currentTarget) {
     e.currentTarget.classList.remove('active');
@@ -141,6 +139,7 @@ document.getElementById('project-modal').addEventListener('click', (e) => {
   }
 });
 </script>
+
 
 
 </body>
