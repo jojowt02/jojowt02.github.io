@@ -115,6 +115,29 @@ a: active {
   text-transform: uppercase;
 }
 
+.site-logo a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #22282b;
+}
+
+.site-logo a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 0;
+  height: 1px;
+  background: #22282b;
+  transition: width 0.2s ease;
+}
+
+.site-logo a:hover::after {
+  width: 100%;
+}
+
+
+
 .site-nav a {
   text-decoration: none;
   font-size: 0.95rem;
