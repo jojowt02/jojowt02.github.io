@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECAM 3D Printer</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <div class="site-logo">Jonathan Thomas</div>
+      <nav class="site-nav">
+        <a href="m-eng.html">MEng</a>
+        <a href="index.html">About</a>
+        <a href="#experience">Work Experience</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-heading">
+        <p class="hero-kicker">Individual Project</p>
+        <h2>Modelling and Experimental Validation of a Multi-Electrode Electrochemical 
+          Additive Manufacturing System using Sequential Pulsed Deposition</h2>
+        <h3>Grade: 84.5%</h3>
+      </div>
+      
+      <p>
+        Electrochemical Additive Manufacturing (ECAM) provides a low-energy, 
+        room-temperature pathway for metal 3D printing, but suffers from slow 
+        deposition rates due to ion depletion around a single electrode. My project 
+        explored whether a multi-electrode ECAM configuration, fired sequentially, 
+        could improve deposition uniformity and quality while reducing these ion-transport limitations.
+      </p>
+        
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+
+      <h3>Objectives</h3>
+      <ul>
+        <li>Simulate multi-electrode behaviour to predict current density and ion depletion zones.</li>
+        <li>Design and prototype a 2×1 ECAM printer capable of sequential pulsed deposition.</li>
+        <li>Experimentally assess how pulse duration and electrode spacing affect copper deposition morphology.</li>
+        <li>Evaluate whether sequential firing can mitigate diffusion-limited aggregation (DLA) and improve surface quality.</li>
+      </ul>
+
+      <h3>Approach</h3>
+      <ul>
+        <li>Built a custom 3D MATLAB simulation to examine electric-field interactions between electrodes and identify minimum spacing to avoid stray deposition.</li><li>Designed and manufactured a low-cost ECAM test rig, including a modular electrode array, 3D-printed fixtures, and Arduino-based pulse control.</li>
+        <li>Performed controlled copper deposition experiments varying inter-electrode gap, firing sequence, and pulse duration (0.05–4 s).</li>
+        <li>Analysed all deposits using 3D focus-variation microscopy and custom MATLAB image/point-cloud processing.</li>
+      </ul>
+
+      <h3>Key Findings</h3>
+      <ul>
+        <li>Simulation showed that at least 1 mm spacing is required for independent electric fields and clean operation.</li>
+        <li>0.5 s pulsed sequential firing improved surface roughness by ~16% vs. single-electrode control, producing more compact, uniform deposits.</li>
+        <li>Long pulses (≥2 s) caused dendritic growth due to ion depletion—confirming the benefit of short recovery periods.</li>
+        <li>Very short pulses (0.05–0.25 s) produced dense, smooth nodules and more accurate deposit diameters.</li>
+        <li>Major experimental challenge: immersion deposition on brass electrodes caused debris, inconsistent geometries, and degraded repeatability.</li>
+      </ul>
+        
+      <h3>Outcome</h3>
+      <p>
+        The project successfully delivered the first verified proof-of-concept for a sequentially pulsed, multi-electrode ECAM system using simple hardware. Results demonstrate that sequential firing improves deposition quality and can counteract diffusion-limited effects—offering a promising path toward scalable, low-cost electrochemical 3D printing.
+        Future work includes automated Z-axis control, inert microelectrodes (e.g., platinum), improved electrolyte flow, and scaling to larger electrode arrays.
+      </p>
+      
+    </div>
+
+    
+  </section>
+
+
+
+
+
+
+  
+</body>
