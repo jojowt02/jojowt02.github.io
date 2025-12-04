@@ -656,4 +656,10 @@ a: active {
   background: rgba(0,0,0,0.05);
 }
 
+.chart-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
 
