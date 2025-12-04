@@ -654,3 +654,9 @@ a: active {
 .grades-table tr:hover {
   background: rgba(0,0,0,0.05);
 }
+
+.chart-area {
+  min-height: 520px; /* or whatever your biggest version needs */
+  position: relative;
+}
+
