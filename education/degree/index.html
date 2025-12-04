@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Education | Jonathan Thomas</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
-
+  <title>MEng Aerospace Engineering | Jonathan Thomas</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet"/>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -29,9 +30,212 @@
         <a href="/index.html">Contact</a>
       </nav>
     </div>
+    <div class="container nav-inner">
+      <nav class="site-nav">
+        <a href="#experience">Experience</a>
+        <a href="#grades">Module Grades</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
   </header>
 
- 
+  <!-- MAIN PAGE CONTENTS -->
+  <section id="experience" class="section section-light">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">University Experience</p>
+        <h2>MEng Hons Aerospace Engineering</h2>
+        <h3>Grade: First Class</h3>
+      </div>
+  
+      <p>
+        Welcome to the detailed overview of my MEng Aerospace Engineering degree.
+        Here you’ll find a breakdown of key projects, engineering modules, and
+        practical work completed during my studies.
+      </p>
+  
+      <div class="experience-grid">
+        
+        <div class="card card-light experience-card">
+          <h3>Multi-Electrode ECAM Printer (MEng Final Project)</h3>
+          <p>Designing and validating a multi-electrode electrochemical additive
+          manufacturing system for high-resolution copper microstructures.</p>
+          <a href="ecam.html" class="btn primary">Read More</a>
+        </div>
+  
+        <div class="card card-light experience-card">
+          <h3>UAS Challenge</h3>
+          <p>IMechE Unmanned Aerial Systems competition focusing on autonomous flight
+          operations and airframe/system design.</p>
+          <a href="uas.html" class="btn primary">Read More</a>
+        </div>
+  
+        <div class="card card-light experience-card">
+          <h3>Spacecraft Systems Engineering Coursework</h3>
+          <p>Full mission design including ConOps, payload selection, subsystem sizing,
+          and operational analysis.</p>
+          <a href="spacecraft-systems.html" class="btn primary">Read More</a>
+        </div>
+        
+      </div>
+  
+    </div>
+  </section>
+  
+  
+  
+  <section id="grades" class="section section-light">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">Academic Performance</p>
+        <h2>Module Grades</h2>
+      </div>
+  
+      <div class="chart-buttons">
+        <button data-year="year1" class="btn primary chart-switch">Year 1</button>
+        <button data-year="year2" class="btn primary chart-switch">Year 2</button>
+        <button data-year="year3" class="btn primary chart-switch">Year 3</button>
+        <button data-year="meng"  class="btn primary chart-switch">MEng</button>
+        <button data-year="all"   class="btn primary chart-switch">All Years</button>
+      </div>
+  
+      
+      <canvas id="gradesChart"></canvas>
+      
+      <div id="gradesTable"></div>
+  
+  
+    </div>
+  </section>
+  
+  
+  
+  
+  
+    
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      © 2025 Jonathan Thomas.
+    </div>
+  </footer>
+  
+  
+  
+  
+  
+    
+  <script>
+  const grades = {
+    year1: {
+      labels: ["Aerospace Aerodynamics", "Aerospace Design and Materials", "Aerospace Electrical and Electronic Engineering", "Aerospace Statics and Dynamics", "Professional Engineering & Project 1"],
+      data:   [66, 75, 88, 68, 67, 78]
+    },
+    year2: {
+      labels: ["Thermodynamics & Aerospace Propulsion", "Airframe and Materials", "Dynamics & Flight Mechanics", "Control of Aerospace Systems", "Professional Engineering & Project 2", "Aerospace Design and Manufacture"],
+      data:   [89, 63, 85, 52, 67, 66]
+    },
+    year3: {
+      labels: ["Introduction to Space", "Computer Modelling Techniques", "Aerospace Group Design Project", "Management and Professional Practice", "Avionic Systems"],
+      data:   [83, 79, 70, 76, 71]
+    },
+    meng: {
+      labels: ["Manufacturing Automation Technology", "Cognitive Ergonomics in Design", "Aerospace Industry Organisation", "Digital Manufacturing", "MEng Individual Project", "Spacecraft System and Design", "Systems Engineering", "Additive Manufacturing & 3D-Printing"],
+      data:   [78, 54, 68, 53, 82, 75, 80, 68]
+    }
+  };
+  
+  // Combine into All Years
+  grades.all = {
+    labels: [
+      ...grades.year1.labels,
+      ...grades.year2.labels,
+      ...grades.year3.labels,
+      ...grades.meng.labels
+    ],
+    data: [
+      ...grades.year1.data,
+      ...grades.year2.data,
+      ...grades.year3.data,
+      ...grades.meng.data
+    ]
+  };
+  </script>
+  
+    
+  
+  <script>
+  let ctx = document.getElementById('gradesChart').getContext('2d');
+  let chart;
+  
+  // Generate table under the chart
+  function loadTable(yearKey) {
+    const year = grades[yearKey];
+  
+    let html = `
+      <table class="grades-table">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Grade (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+  
+    for (let i = 0; i < year.labels.length; i++) {
+      html += `
+        <tr>
+          <td>${year.labels[i]}</td>
+          <td>${year.data[i]}</td>
+        </tr>
+      `;
+    }
+  
+    html += "</tbody></table>";
+  
+    document.getElementById("gradesTable").innerHTML = html;
+  }
+  
+  function loadChart(yearKey) {
+    const year = grades[yearKey];
+  
+    if (chart) chart.destroy();
+  
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: year.labels,
+        datasets: [{
+          label: "Grade (%)",
+          data: year.data,
+          backgroundColor: year.data.map(() => "#3a4a47"), // your theme colour
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            max: 100,
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  
+    loadTable(yearKey); // ← table loads EVERY TIME chart loads
+  }
+  
+  // default
+  loadChart("all");
+  
+  // button switching
+  document.querySelectorAll('.chart-switch').forEach(btn => {
+    btn.addEventListener('click', () => loadChart(btn.dataset.year));
+  });
+  </script>
+
+  
 
   <!-- CONTACT -->
   <section id="contact" class="section section-dark contact-section">
