@@ -89,6 +89,8 @@
       <button data-year="meng"  class="btn primary chart-switch">MEng</button>
       <button data-year="all"   class="btn primary chart-switch">All Years</button>
     </div>
+
+    <div id="gradesTable"></div>
   </div>
 </section>
 
@@ -109,87 +111,126 @@
 
   
 <script>
-const grades = {
+const modules = {
   year1: {
     labels: ["Maths 1", "Statics", "Aero Materials", "Programming", "Dynamics"],
-    data:   [82, 78, 74, 90, 69]
+    grades: [82, 78, 74, 90, 69],
+    credits: [20, 10, 10, 20, 20]
   },
   year2: {
     labels: ["Thermo", "Aero Design", "Structures", "Systems", "Fluids"],
-    data:   [85, 72, 88, 91, 79]
+    grades: [85, 72, 88, 91, 79],
+    credits: [20, 20, 20, 20, 10]
   },
   year3: {
     labels: ["Space Dynamics", "Control", "Propulsion", "FEM", "Group Project"],
-    data:   [81, 77, 84, 73, 90]
+    grades: [81, 77, 84, 73, 90],
+    credits: [10, 20, 10, 20, 40]
   },
   meng: {
     labels: ["ECAM Project", "Advanced Systems", "Research Methods"],
-    data:   [78, 82, 75]
+    grades: [78, 82, 75],
+    credits: [40, 20, 20]
   }
 };
 
-// Combine into All Years
-grades.all = {
+// Combine all
+modules.all = {
   labels: [
-    ...grades.year1.labels,
-    ...grades.year2.labels,
-    ...grades.year3.labels,
-    ...grades.meng.labels
+    ...modules.year1.labels,
+    ...modules.year2.labels,
+    ...modules.year3.labels,
+    ...modules.meng.labels
   ],
-  data: [
-    ...grades.year1.data,
-    ...grades.year2.data,
-    ...grades.year3.data,
-    ...grades.meng.data
+  grades: [
+    ...modules.year1.grades,
+    ...modules.year2.grades,
+    ...modules.year3.grades,
+    ...modules.meng.grades
+  ],
+  credits: [
+    ...modules.year1.credits,
+    ...modules.year2.credits,
+    ...modules.year3.credits,
+    ...modules.meng.credits
   ]
 };
-</script>
 
-
-
-
-
-
-<script>
 let ctx = document.getElementById('gradesChart').getContext('2d');
 let chart;
 
-function loadChart(yearKey) {
-  const year = grades[yearKey];
+// Create chart
+function loadChart(year) {
+  const data = modules[year];
 
   if (chart) chart.destroy();
 
   chart = new Chart(ctx, {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: year.labels,
+      labels: data.labels,
       datasets: [{
         label: "Grade (%)",
-        data: year.data,
-        backgroundColor: year.data.map(() => "#3a4a47"), // your theme colour
-        borderRadius: 6
+        data: data.grades,
+        backgroundColor: "#3a4a47",
+        borderRadius: 6,
+        barThickness: function(ctx) {
+          return data.credits[ctx.dataIndex] * 6;  // thickness scaling
+        }
       }]
     },
     options: {
+      indexAxis: "y", // LEFT → RIGHT
       responsive: true,
       scales: {
-        y: {
+        x: {
           max: 100,
           beginAtZero: true
         }
       }
     }
   });
+
+  loadTable(year);
 }
 
-// default
+// Generate table under the chart
+function loadTable(year) {
+  const t = modules[year];
+  let html = `
+    <table class="grades-table">
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Credits</th>
+          <th>Grade (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  for (let i = 0; i < t.labels.length; i++) {
+    html += `
+      <tr>
+        <td>${t.labels[i]}</td>
+        <td>${t.credits[i]}</td>
+        <td>${t.grades[i]}</td>
+      </tr>`;
+  }
+
+  html += "</tbody></table>";
+  document.getElementById("gradesTable").innerHTML = html;
+}
+
+// default view
 loadChart("all");
 
-// button switching
-document.querySelectorAll('.chart-switch').forEach(btn => {
-  btn.addEventListener('click', () => loadChart(btn.dataset.year));
+// Buttons switching
+document.querySelectorAll(".chart-switch").forEach(btn => {
+  btn.addEventListener("click", () => loadChart(btn.dataset.year));
 });
 </script>
+
 
   
 </body>
