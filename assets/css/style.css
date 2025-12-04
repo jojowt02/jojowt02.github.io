@@ -407,8 +407,11 @@ a: active {
 .education-item {
   padding: 1.6rem 1.8rem;
   border-radius: 12px;
-  background: #ffffff;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+}
+
+.education-item-dark {
+  background: #ffffff;
 }
 
 .education-item h3 {
