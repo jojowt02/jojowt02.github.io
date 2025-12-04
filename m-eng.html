@@ -81,6 +81,7 @@
     </div>
 
     <canvas id="gradesChart"></canvas>
+    <div id="gradesTable"></div>
 
     <div class="chart-buttons">
       <button data-year="year1" class="btn primary chart-switch">Year 1</button>
@@ -151,6 +152,35 @@ grades.all = {
 let ctx = document.getElementById('gradesChart').getContext('2d');
 let chart;
 
+// Generate table under the chart
+function loadTable(yearKey) {
+  const year = grades[yearKey];
+
+  let html = `
+    <table class="grades-table">
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Grade (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  for (let i = 0; i < year.labels.length; i++) {
+    html += `
+      <tr>
+        <td>${year.labels[i]}</td>
+        <td>${year.data[i]}</td>
+      </tr>
+    `;
+  }
+
+  html += "</tbody></table>";
+
+  document.getElementById("gradesTable").innerHTML = html;
+}
+
 function loadChart(yearKey) {
   const year = grades[yearKey];
 
@@ -177,6 +207,8 @@ function loadChart(yearKey) {
       }
     }
   });
+
+  loadTable(yearKey); // ← table loads EVERY TIME chart loads
 }
 
 // default
@@ -187,6 +219,7 @@ document.querySelectorAll('.chart-switch').forEach(btn => {
   btn.addEventListener('click', () => loadChart(btn.dataset.year));
 });
 </script>
+
 
 
 
