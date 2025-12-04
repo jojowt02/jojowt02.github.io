@@ -71,11 +71,125 @@
   </div>
 </section>
 
+
+
+<section class="section section-light">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">Academic Performance</p>
+      <h2>Module Grades</h2>
+    </div>
+
+    <canvas id="gradesChart"></canvas>
+
+    <div class="chart-buttons">
+      <button data-year="year1" class="btn primary chart-switch">Year 1</button>
+      <button data-year="year2" class="btn primary chart-switch">Year 2</button>
+      <button data-year="year3" class="btn primary chart-switch">Year 3</button>
+      <button data-year="meng"  class="btn primary chart-switch">MEng</button>
+      <button data-year="all"   class="btn primary chart-switch">All Years</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  
 <footer class="site-footer">
   <div class="container footer-inner">
     © 2025 Jonathan Thomas.
   </div>
 </footer>
+
+
+
+
+
+  
+<script>
+const grades = {
+  year1: {
+    labels: ["Maths 1", "Statics", "Aero Materials", "Programming", "Dynamics"],
+    data:   [82, 78, 74, 90, 69]
+  },
+  year2: {
+    labels: ["Thermo", "Aero Design", "Structures", "Systems", "Fluids"],
+    data:   [85, 72, 88, 91, 79]
+  },
+  year3: {
+    labels: ["Space Dynamics", "Control", "Propulsion", "FEM", "Group Project"],
+    data:   [81, 77, 84, 73, 90]
+  },
+  meng: {
+    labels: ["ECAM Project", "Advanced Systems", "Research Methods"],
+    data:   [78, 82, 75]
+  }
+};
+
+// Combine into All Years
+grades.all = {
+  labels: [
+    ...grades.year1.labels,
+    ...grades.year2.labels,
+    ...grades.year3.labels,
+    ...grades.meng.labels
+  ],
+  data: [
+    ...grades.year1.data,
+    ...grades.year2.data,
+    ...grades.year3.data,
+    ...grades.meng.data
+  ]
+};
+</script>
+
+
+
+
+
+
+<script>
+let ctx = document.getElementById('gradesChart').getContext('2d');
+let chart;
+
+function loadChart(yearKey) {
+  const year = grades[yearKey];
+
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: year.labels,
+      datasets: [{
+        label: "Grade (%)",
+        data: year.data,
+        backgroundColor: year.data.map(() => "#3a4a47"), // your theme colour
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          max: 100,
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+// default
+loadChart("all");
+
+// button switching
+document.querySelectorAll('.chart-switch').forEach(btn => {
+  btn.addEventListener('click', () => loadChart(btn.dataset.year));
+});
+</script>
 
   
 </body>
