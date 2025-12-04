@@ -74,7 +74,7 @@
 
 
 <section class="section section-light">
-  <div class="container">
+  <div class="chart-area">
     <div class="section-heading">
       <p class="section-kicker">Academic Performance</p>
       <h2>Module Grades</h2>
@@ -225,8 +225,13 @@ loadChart("all");
 
 // Buttons switching
 document.querySelectorAll(".chart-switch").forEach(btn => {
-  btn.addEventListener("click", () => loadChart(btn.dataset.year));
+  btn.addEventListener("click", () => {
+    const y = window.scrollY; 
+    loadChart(btn.dataset.year);
+    setTimeout(() => window.scrollTo(0, y), 0);
+  });
 });
+
 </script>
 
 
