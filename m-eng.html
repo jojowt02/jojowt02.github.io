@@ -74,7 +74,7 @@
 
 
 <section class="section section-light">
-  <div class="chart-area">
+  <div class="container">
     <div class="section-heading">
       <p class="section-kicker">Academic Performance</p>
       <h2>Module Grades</h2>
@@ -89,8 +89,6 @@
       <button data-year="meng"  class="btn primary chart-switch">MEng</button>
       <button data-year="all"   class="btn primary chart-switch">All Years</button>
     </div>
-
-    <div id="gradesTable"></div>
   </div>
 </section>
 
@@ -111,128 +109,85 @@
 
   
 <script>
-const modules = {
+const grades = {
   year1: {
     labels: ["Maths 1", "Statics", "Aero Materials", "Programming", "Dynamics"],
-    grades: [82, 78, 74, 90, 69],
-    credits: [20, 10, 10, 20, 20]
+    data:   [82, 78, 74, 90, 69]
   },
   year2: {
     labels: ["Thermo", "Aero Design", "Structures", "Systems", "Fluids"],
-    grades: [85, 72, 88, 91, 79],
-    credits: [20, 20, 20, 20, 10]
+    data:   [85, 72, 88, 91, 79]
   },
   year3: {
     labels: ["Space Dynamics", "Control", "Propulsion", "FEM", "Group Project"],
-    grades: [81, 77, 84, 73, 90],
-    credits: [10, 20, 10, 20, 40]
+    data:   [81, 77, 84, 73, 90]
   },
   meng: {
     labels: ["ECAM Project", "Advanced Systems", "Research Methods"],
-    grades: [78, 82, 75],
-    credits: [40, 20, 20]
+    data:   [78, 82, 75]
   }
 };
 
-// Combine all
-modules.all = {
+// Combine into All Years
+grades.all = {
   labels: [
-    ...modules.year1.labels,
-    ...modules.year2.labels,
-    ...modules.year3.labels,
-    ...modules.meng.labels
+    ...grades.year1.labels,
+    ...grades.year2.labels,
+    ...grades.year3.labels,
+    ...grades.meng.labels
   ],
-  grades: [
-    ...modules.year1.grades,
-    ...modules.year2.grades,
-    ...modules.year3.grades,
-    ...modules.meng.grades
-  ],
-  credits: [
-    ...modules.year1.credits,
-    ...modules.year2.credits,
-    ...modules.year3.credits,
-    ...modules.meng.credits
+  data: [
+    ...grades.year1.data,
+    ...grades.year2.data,
+    ...grades.year3.data,
+    ...grades.meng.data
   ]
 };
+</script>
 
+  
+
+<script>
 let ctx = document.getElementById('gradesChart').getContext('2d');
 let chart;
 
-// Create chart
-function loadChart(year) {
-  const data = modules[year];
+function loadChart(yearKey) {
+  const year = grades[yearKey];
 
   if (chart) chart.destroy();
 
   chart = new Chart(ctx, {
-    type: "bar",
+    type: 'bar',
     data: {
-      labels: data.labels,
+      labels: year.labels,
       datasets: [{
         label: "Grade (%)",
-        data: data.grades,
-        backgroundColor: "#3a4a47",
-        borderRadius: 6,
-        barThickness: 20
+        data: year.data,
+        backgroundColor: year.data.map(() => "#3a4a47"), // your theme colour
+        borderRadius: 6
       }]
     },
     options: {
-      indexAxis: "y", // LEFT → RIGHT
       responsive: true,
       scales: {
-        x: {
+        y: {
           max: 100,
           beginAtZero: true
         }
       }
     }
   });
-
-  loadTable(year);
 }
 
-// Generate table under the chart
-function loadTable(year) {
-  const t = modules[year];
-  let html = `
-    <table class="grades-table">
-      <thead>
-        <tr>
-          <th>Module</th>
-          <th>Credits</th>
-          <th>Grade (%)</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  for (let i = 0; i < t.labels.length; i++) {
-    html += `
-      <tr>
-        <td>${t.labels[i]}</td>
-        <td>${t.credits[i]}</td>
-        <td>${t.grades[i]}</td>
-      </tr>`;
-  }
-
-  html += "</tbody></table>";
-  document.getElementById("gradesTable").innerHTML = html;
-}
-
-// default view
+// default
 loadChart("all");
 
-// Buttons switching
-document.querySelectorAll(".chart-switch").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const y = window.scrollY; 
-    loadChart(btn.dataset.year);
-    setTimeout(() => window.scrollTo(0, y), 0);
-  });
+// button switching
+document.querySelectorAll('.chart-switch').forEach(btn => {
+  btn.addEventListener('click', () => loadChart(btn.dataset.year));
 });
-
 </script>
+
 
 
   
