@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CubeSat Mission Design | Jonathan Thomas</title>
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <div class="site-logo"><a href="/index.html">Jonathan Thomas</a></div>
+      <nav class="site-nav">
+        <a href="/index.html">About</a>
+        <a href="/education/index.html">Education</a>
+        <a href="/experience/index.html">Experience</a>
+        <a href="/achievements/index.html">Achievements</a>
+        <a href="/projects/index.html">Projects</a>
+        <a href="/index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <section class="section section-light">
+    <div class="container">
+      
+      <div class="section-heading">
+        <p class="section-kicker">Degree Project</p>
+        <h2>CubeSat Mission Design – HyperScout-2 Volcano Monitoring</h2>
+      </div>
+
+      <p>
+        As part of the <b>Spacecraft Systems & Design (MMME4038)</b> module, I developed a full CubeSat
+        mission concept designed to monitor volcanic activity in Japan. The mission centres on
+        the <b>HyperScout-2 hyperspectral imager</b>, requiring a complete end-to-end engineering breakdown:
+        payload integration, subsystem architecture, power and thermal considerations, communication
+        strategy, operational planning, and overall system justification.
+      </p>
+
+      <br>
+
+      <!-- PAYLOAD SECTION -->
+      <article class="card card-light education-item">
+        <h3>Mission Objectives</h3>
+        <p>
+          The goal of the mission was to reliably detect thermal anomalies, gas signatures, and surface
+          changes around active Japanese volcanoes using hyperspectral imaging. Core objectives included:
+        </p>
+        <ul>
+          <li>Integrating HyperScout-2 into a 6U CubeSat bus within mass, power, and thermal constraints.</li>
+          <li>Designing a feasible CONOPS supporting daily observation passes.</li>
+          <li>Selecting an orbit that maximises revisit frequency over volcanic regions.</li>
+          <li>Ensuring downlink capability for high-volume hyperspectral datasets.</li>
+        </ul>
+      </article>
+
+      <!-- PAYLOAD DETAILS -->
+      <article class="card card-light education-item">
+        <h3>Payload: HyperScout-2</h3>
+        <p>
+          HyperScout-2 is a compact hyperspectral and thermal imaging instrument capable of capturing
+          detailed spectral signatures critical for volcanic monitoring. Its wide field of view and spectral
+          depth enable detection of pre-eruption indicators such as gas release and thermal hotspots.
+        </p>
+        <ul>
+          <li>Hyperspectral + multispectral capabilities in a CubeSat-compatible form.</li>
+          <li>Low-power imaging but high data generation, influencing communications design.</li>
+          <li>Requires strict thermal management and stable nadir pointing.</li>
+        </ul>
+      </article>
+
+      <!-- CONOPS -->
+      <article class="card card-light education-item">
+        <h3>Concept of Operations (CONOPS)</h3>
+        <p>
+          The mission lifecycle was structured around predictable imaging opportunities and efficient
+          downlink scheduling. Key elements included:
+        </p>
+        <ul>
+          <li>Operating in a <b>sun-synchronous low-Earth orbit</b> for consistent lighting conditions.</li>
+          <li>Payload warm-up, calibration, and imaging cycles triggered during passes over Japan.</li>
+          <li>Onboard storage of hyperspectral data followed by S-band downlink during ground-station windows.</li>
+          <li>Autonomous safe-mode transitions to maintain spacecraft health.</li>
+        </ul>
+      </article>
+
+      <!-- SUBSYSTEMS -->
+      <article class="card card-light education-item">
+        <h3>Subsystem Design Summary</h3>
+
+        <p><b>Power System (EPS)</b><br>
+        Deployable solar panels and a regulated battery architecture were sized around peak payload demands,
+        including thermal control and S-band transmission.</p>
+
+        <p><b>ADCS</b><br>
+        A three-axis stabilised system with reaction wheels and magnetorquers met the pointing requirements for
+        stable Hyperscout-2 imaging.</p>
+
+        <p><b>Communications</b><br>
+        High data throughput required an S-band downlink paired with a UHF/VHF command uplink.</p>
+
+        <p><b>Thermal Control</b><br>
+        Mixed active–passive strategies (MLI, heaters, payload temperature conditioning) ensured thermal stability.</p>
+
+        <p><b>Structural & Mechanical</b><br>
+        Internal layout prioritised payload field-of-view, thermal spacing, and centre-of-gravity alignment.</p>
+      </article>
+
+      <!-- CHALLENGES -->
+      <article class="card card-light education-item">
+        <h3>Key Engineering Challenges</h3>
+        <ul>
+          <li>Balancing hyperspectral data volume with available downlink capacity.</li>
+          <li>Managing thermal loads on the payload across varying orbital conditions.</li>
+          <li>Choosing an orbit optimised for revisit while retaining CubeSat feasibility.</li>
+          <li>Maintaining adequate power margins during peak operations.</li>
+          <li>Ensuring robust autonomous behaviour with limited ground contact.</li>
+        </ul>
+      </article>
+
+      <!-- REFLECTION -->
+      <article class="card card-light education-item">
+        <h3>Outcome & Reflection</h3>
+        <p>
+          This project strengthened my understanding of spacecraft systems engineering,
+          requirement flowdown, and subsystem integration. Working with a real commercial payload,
+          even in a theoretical context, helped develop practical engineering judgement—balancing
+          feasibility, performance, and mission constraints. It also deepened my appreciation
+          for payload-driven spacecraft architecture and end-to-end mission reasoning.
+        </p>
+      </article>
+
+      <br>
+
+      <a href="/education/degree/projects/index.html" class="btn ghost">← Back to Degree Projects</a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 Jonathan Thomas.</div>
+      <div>Portfolio · Systems Engineer | Aerospace Engineering Graduate</div>
+    </div>
+  </footer>
+
+</body>
+</html>
