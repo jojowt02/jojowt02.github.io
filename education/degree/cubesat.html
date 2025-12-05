@@ -18,7 +18,7 @@
 
 <body>
 
-  <!-- Top navigation -->
+  <!-- NAVIGATION -->
   <header class="site-header">
     <div class="container nav-inner">
       <div class="site-logo"><a href="/index.html">Jonathan Thomas</a></div>
@@ -28,118 +28,176 @@
         <a href="/experience/index.html">Experience</a>
         <a href="/achievements/index.html">Achievements</a>
         <a href="/projects/index.html">Projects</a>
-        <a href="/index.html#contact">Contact</a>
+        <a href="/index.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <section class="section section-light">
+
+  <!-- HERO / INTRO -->
+  <section class="section section-dark">
     <div class="container">
-      
       <div class="section-heading">
-        <p class="section-kicker">Degree Project</p>
-        <h2>CubeSat Mission Design – HyperScout-2 Volcano Monitoring</h2>
+        <p class="section-kicker light">Degree Project</p>
+        <h2 class="light">CubeSat Mission Design – HyperScout-2 Volcano Monitoring</h2>
       </div>
 
-      <p>
-        As part of the <b>Spacecraft Systems & Design (MMME4038)</b> module, I developed a full CubeSat
-        mission concept designed to monitor volcanic activity in Japan. The mission centres on
-        the <b>HyperScout-2 hyperspectral imager</b>, requiring a complete end-to-end engineering breakdown:
-        payload integration, subsystem architecture, power and thermal considerations, communication
-        strategy, operational planning, and overall system justification.
+      <p class="light" style="max-width: 750px; line-height: 1.75;">
+        As part of the <b>Spacecraft Systems & Design (MMME4038)</b> module, I designed a 
+        CubeSat mission to monitor volcanic activity in Japan using the 
+        <b>HyperScout-2 hyperspectral imager</b>. The project covered payload-driven spacecraft 
+        architecture, subsystem integration, orbit selection, power and thermal modelling, and 
+        a complete mission-level CONOPS.
       </p>
+    </div>
+  </section>
+
+
+
+  <!-- MISSION OBJECTIVES -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">Mission Overview</p>
+        <h2>Mission Objectives</h2>
+      </div>
+
+      <article class="card card-light education-item">
+        <p>
+          The mission’s purpose was to detect volcanic temperature anomalies, gas signatures, and 
+          surface morphology changes using hyperspectral imaging. Core engineering goals included:
+        </p>
+        <ul>
+          <li>Integrating HyperScout-2 within 6U constraints (mass, power, thermal, volume).</li>
+          <li>Designing an operations schedule for daily imaging passes over Japan.</li>
+          <li>Selecting an orbit balancing revisit, lighting conditions, and power availability.</li>
+          <li>Ensuring sufficient downlink capacity for high-volume hyperspectral datasets.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- PAYLOAD SECTION -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">Payload</p>
+        <h2>HyperScout-2 Imager</h2>
+      </div>
+
+      <article class="card card-light education-item">
+        <p>
+          HyperScout-2 is a compact hyperspectral + thermal imaging instrument, capable of capturing 
+          detailed spectral signatures essential for volcanic monitoring. The payload strongly influenced 
+          the spacecraft design, driving pointing requirements, thermal management, and data handling.
+        </p>
+
+        <ul>
+          <li>Hyperspectral, multispectral and thermal imaging combined.</li>
+          <li>Low electrical power, but high data generation → communication bottleneck.</li>
+          <li>Thermal stability essential for accurate spectral response.</li>
+          <li>Wide field of view → optimised for regional volcanic mapping.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- CONOPS -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">Concept of Operations</p>
+        <h2>Mission CONOPS</h2>
+      </div>
+
+      <article class="card card-light education-item">
+        <p>
+          The mission lifecycle was built around predictable imaging opportunities and efficient use of 
+          power and communication windows.
+        </p>
+
+        <ul>
+          <li>Sun-synchronous low-Earth orbit ensuring consistent lighting and repeat coverage.</li>
+          <li>Autonomous payload warm-up, calibration, and imaging when over Japan.</li>
+          <li>Onboard storage of hyperspectral cubes → S-band downlink during ground passes.</li>
+          <li>Fallback safe-mode for attitude and thermal protection.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- SUBSYSTEMS -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-heading">
+        <p class="section-kicker">Spacecraft Architecture</p>
+        <h2>Subsystem Design Summary</h2>
+      </div>
+
+      <article class="card card-light education-item">
+        <p><b>Power System (EPS)</b><br>
+          Deployable solar panels + regulated battery system, sized around payload peak demand and S-band transmission windows.
+        </p>
+
+        <p><b>ADCS</b><br>
+          Three-axis control using reaction wheels and magnetorquers, ensuring stable nadir pointing for hyperspectral imaging.
+        </p>
+
+        <p><b>Communications</b><br>
+          UHF/VHF command link paired with high-rate S-band downlink to accommodate large hyperspectral data volumes.
+        </p>
+
+        <p><b>Thermal Control</b><br>
+          Passive elements (MLI, coatings) combined with payload and battery heaters to maintain operational temperature ranges.
+        </p>
+
+        <p><b>Structure & Layout</b><br>
+          Internal design prioritised payload FOV, thermal spacing, centre-of-gravity alignment, and ease of I&T procedures.
+        </p>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- CHALLENGES + REFLECTION -->
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="section-kicker">Engineering Considerations</p>
+        <h2>Key Challenges</h2>
+      </div>
+
+      <article class="card card-light education-item">
+        <ul>
+          <li>Downlink bandwidth vs hyperspectral cube size.</li>
+          <li>Thermal management during imaging and eclipse periods.</li>
+          <li>Maintaining power margins with limited panel area.</li>
+          <li>Payload-driven attitude stability requirements.</li>
+          <li>Ensuring robust autonomy with limited ground contact time.</li>
+        </ul>
+      </article>
 
       <br>
 
-      <!-- PAYLOAD SECTION -->
+      <div class="section-heading">
+        <p class="section-kicker">Reflection</p>
+        <h2>Outcome & Learning</h2>
+      </div>
+
       <article class="card card-light education-item">
-        <h3>Mission Objectives</h3>
         <p>
-          The goal of the mission was to reliably detect thermal anomalies, gas signatures, and surface
-          changes around active Japanese volcanoes using hyperspectral imaging. Core objectives included:
-        </p>
-        <ul>
-          <li>Integrating HyperScout-2 into a 6U CubeSat bus within mass, power, and thermal constraints.</li>
-          <li>Designing a feasible CONOPS supporting daily observation passes.</li>
-          <li>Selecting an orbit that maximises revisit frequency over volcanic regions.</li>
-          <li>Ensuring downlink capability for high-volume hyperspectral datasets.</li>
-        </ul>
-      </article>
-
-      <!-- PAYLOAD DETAILS -->
-      <article class="card card-light education-item">
-        <h3>Payload: HyperScout-2</h3>
-        <p>
-          HyperScout-2 is a compact hyperspectral and thermal imaging instrument capable of capturing
-          detailed spectral signatures critical for volcanic monitoring. Its wide field of view and spectral
-          depth enable detection of pre-eruption indicators such as gas release and thermal hotspots.
-        </p>
-        <ul>
-          <li>Hyperspectral + multispectral capabilities in a CubeSat-compatible form.</li>
-          <li>Low-power imaging but high data generation, influencing communications design.</li>
-          <li>Requires strict thermal management and stable nadir pointing.</li>
-        </ul>
-      </article>
-
-      <!-- CONOPS -->
-      <article class="card card-light education-item">
-        <h3>Concept of Operations (CONOPS)</h3>
-        <p>
-          The mission lifecycle was structured around predictable imaging opportunities and efficient
-          downlink scheduling. Key elements included:
-        </p>
-        <ul>
-          <li>Operating in a <b>sun-synchronous low-Earth orbit</b> for consistent lighting conditions.</li>
-          <li>Payload warm-up, calibration, and imaging cycles triggered during passes over Japan.</li>
-          <li>Onboard storage of hyperspectral data followed by S-band downlink during ground-station windows.</li>
-          <li>Autonomous safe-mode transitions to maintain spacecraft health.</li>
-        </ul>
-      </article>
-
-      <!-- SUBSYSTEMS -->
-      <article class="card card-light education-item">
-        <h3>Subsystem Design Summary</h3>
-
-        <p><b>Power System (EPS)</b><br>
-        Deployable solar panels and a regulated battery architecture were sized around peak payload demands,
-        including thermal control and S-band transmission.</p>
-
-        <p><b>ADCS</b><br>
-        A three-axis stabilised system with reaction wheels and magnetorquers met the pointing requirements for
-        stable Hyperscout-2 imaging.</p>
-
-        <p><b>Communications</b><br>
-        High data throughput required an S-band downlink paired with a UHF/VHF command uplink.</p>
-
-        <p><b>Thermal Control</b><br>
-        Mixed active–passive strategies (MLI, heaters, payload temperature conditioning) ensured thermal stability.</p>
-
-        <p><b>Structural & Mechanical</b><br>
-        Internal layout prioritised payload field-of-view, thermal spacing, and centre-of-gravity alignment.</p>
-      </article>
-
-      <!-- CHALLENGES -->
-      <article class="card card-light education-item">
-        <h3>Key Engineering Challenges</h3>
-        <ul>
-          <li>Balancing hyperspectral data volume with available downlink capacity.</li>
-          <li>Managing thermal loads on the payload across varying orbital conditions.</li>
-          <li>Choosing an orbit optimised for revisit while retaining CubeSat feasibility.</li>
-          <li>Maintaining adequate power margins during peak operations.</li>
-          <li>Ensuring robust autonomous behaviour with limited ground contact.</li>
-        </ul>
-      </article>
-
-      <!-- REFLECTION -->
-      <article class="card card-light education-item">
-        <h3>Outcome & Reflection</h3>
-        <p>
-          This project strengthened my understanding of spacecraft systems engineering,
-          requirement flowdown, and subsystem integration. Working with a real commercial payload,
-          even in a theoretical context, helped develop practical engineering judgement—balancing
-          feasibility, performance, and mission constraints. It also deepened my appreciation
-          for payload-driven spacecraft architecture and end-to-end mission reasoning.
+          This project strengthened my ability to design spacecraft systems under real constraints, 
+          perform requirement flowdown, and justify design trade-offs. Working with HyperScout-2 
+          provided practical insight into payload-driven engineering and the interplay between 
+          subsystem capabilities, mission objectives, and operational feasibility.
         </p>
       </article>
 
@@ -149,6 +207,7 @@
 
     </div>
   </section>
+
 
   <!-- FOOTER -->
   <footer class="site-footer">
