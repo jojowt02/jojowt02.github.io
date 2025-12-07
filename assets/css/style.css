@@ -44,12 +44,6 @@ a: active {
   padding: 0 1.5rem;
 }
 
-.container_button {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 0.5rem;
-}
-
 .section {
   padding: 5rem 0;
 }
